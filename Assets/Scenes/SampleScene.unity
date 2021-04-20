@@ -2255,7 +2255,7 @@ MonoBehaviour:
   - {fileID: 932487805}
   - {fileID: 2131714760}
   textPrefab: {fileID: 1172309553}
-  canvas: {fileID: 0}
+  canvas: {fileID: 1589408312}
   isWhiteTurn: 1
 --- !u!114 &1197041386
 MonoBehaviour:
@@ -2749,6 +2749,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+--- !u!1 &1589408312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 797705721644270445, guid: 9175f6db9ae0acd4295c62b335a2f402,
+    type: 3}
+  m_PrefabInstance: {fileID: 2785566973900306411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1666186228
 GameObject:
   m_ObjectHideFlags: 0
