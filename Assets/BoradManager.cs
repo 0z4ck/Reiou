@@ -508,6 +508,7 @@ public class BoradManager : MonoBehaviour
                 List<Chessman> playerKomadai;
                 GameObject komadaiObject;
                 Vector3 komadaip;
+                Vector3 maisuPos;
 
 
             if (isWhiteTurn)
@@ -530,6 +531,7 @@ public class BoradManager : MonoBehaviour
                 komadaiObject = komadai;
                 
                 komadaip = new Vector3(1.0f, 0f, -0.7f) + Vector3.right * (7 - koma_index);
+                maisuPos = komadaip + new Vector3(0.2f, 0f, 0.5f);
 
             }
             else
@@ -550,7 +552,8 @@ public class BoradManager : MonoBehaviour
                 if (Chessmans[x, y].GetType() == typeof(To)) koma_index = 15;
                 playerKomadai = blackKomadai;
                 komadaiObject = komadaiteki;
-                komadaip = new Vector3(8.2f, 0f, -8.2f) + Vector3.right * (koma_index-8);
+                komadaip = new Vector3(1.2f, 0f, 9.7f) + Vector3.right * (koma_index-8);
+                maisuPos = komadaip - new Vector3(0.2f, 0f, 0.5f);
             }
             
                 {
@@ -574,7 +577,7 @@ public class BoradManager : MonoBehaviour
 
                     Debug.Log(text2.transform.position);
 
-                    Vector3 maisuPos = new Vector3(1.2f, 0f, -0.2f) + Vector3.right * (7 - koma_index);
+                    //Vector3 maisuPos = new Vector3(1.2f, 0f, -0.2f) + Vector3.right * (7 - koma_index);
                     //Vector3 maisuPos = new Vector3(6.2f, 0f, -0.2f) + Vector3.right * 1.857f * (koma_index - 7) * 5f;
 
                     Vector3 maisuSize = new Vector3(0.0015f, 0.0015f, 0.0015f);
@@ -584,7 +587,7 @@ public class BoradManager : MonoBehaviour
                             text.transform.SetParent(canvas.transform);
                             Text texttext = text.GetComponent<Text>();
                             texttext.text = maisuu.ToString();
-                            if (!isWhiteTurn) text.transform.Rotate(new Vector3(90,0,0));
+                            if (!isWhiteTurn) text.transform.Rotate(new Vector3(180,180,0));
                         }
                         else
                         {
