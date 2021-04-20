@@ -309,7 +309,7 @@ public class BoradManager : MonoBehaviour
             //歩の成りこみに関して
             if (selectedChessman.GetType() == typeof(hu))
             {
-                if (isWhiteTurn && y == 6 || y == 7)
+                if (isWhiteTurn && (y == 6 || y == 7))
                 {
                     GameObject go = Instantiate(chessmanPrefabs[7], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
                     GameObject go2 = Instantiate(chessmanPrefabs[21], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
@@ -333,7 +333,7 @@ public class BoradManager : MonoBehaviour
                     SpawnChessman(21, x, y);
                     selectedChessman = Chessmans[x, y];
                 }
-                if (!isWhiteTurn && y == 1 || y == 2)
+                if (!isWhiteTurn && (y == 1 || y == 2))
                 {
                     GameObject go = Instantiate(chessmanPrefabs[15], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
                     GameObject go2 = Instantiate(chessmanPrefabs[27], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
@@ -386,7 +386,7 @@ public class BoradManager : MonoBehaviour
                     selectedChessman = Chessmans[x, y];
                 }
 
-                if (!isWhiteTurn && y == 1 || y == 2)
+                if (!isWhiteTurn && (y == 1 || y == 2))
                 {
                     GameObject go = Instantiate(chessmanPrefabs[14], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
                     GameObject go2 = Instantiate(chessmanPrefabs[26], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
