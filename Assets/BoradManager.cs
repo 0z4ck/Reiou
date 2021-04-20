@@ -29,7 +29,7 @@ public class BoradManager : MonoBehaviour
     private int koma_id = -1;
 
     private double selectionXShousuu = -1;
-    private double selectionYShousuu = -1;
+    private float selectionYShousuu = -1;
 
     public List<GameObject> chessmanPrefabs;
     public GameObject textPrefab;
@@ -62,12 +62,14 @@ public class BoradManager : MonoBehaviour
         UpdateSelection();
         DrawChessboard();
 
-        
-        if (Input.GetMouseButtonDown (0)) 
+
+        if (Input.GetMouseButtonDown(0))
+
         //マウスクリックされた
         {
-
-            //dumpBoard(Chessmans);
+            //Debug.Log(selectionX);
+            
+            //if(selectionX)
             if (selectionX >= 0 && selectionY >= 0)
             //盤面内でクリックがあった
             {
@@ -625,7 +627,8 @@ public class BoradManager : MonoBehaviour
             //Debug.Log(selectionYShousuu);
             selectionX = (int)hit.point.x;
             selectionXShousuu = hit.point.x;
-            selectionYShousuu = hit.point.y;
+            selectionYShousuu = hit.point.z;
+            Debug.Log(selectionYShousuu);
             selectionY = (int)hit.point.z;
         }
         else
