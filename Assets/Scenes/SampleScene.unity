@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3556,6 +3556,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: KomadaiTeki
       objectReference: {fileID: 0}
+    - target: {fileID: 6140519867710929604, guid: 6ebeb5819fe5edc41a5d44221ff2aa29,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6140519867710929608, guid: 6ebeb5819fe5edc41a5d44221ff2aa29,
         type: 3}
       propertyPath: m_RootOrder
@@ -3624,6 +3629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: KomadaiZibun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889175299844346545, guid: 311dab98c8c647f4c882c2077552c54d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6889175299844346557, guid: 311dab98c8c647f4c882c2077552c54d,
         type: 3}
