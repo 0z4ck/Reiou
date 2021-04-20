@@ -575,8 +575,11 @@ public class BoradManager : MonoBehaviour
                     Debug.Log(text2.transform.position);
 
 
-                            Vector3 maisuPos = new Vector3(36.0f, 52.5f, 0.0f) + Vector3.right * 1.857f * koma_index * 5f;
-                            Vector3 maisuSize = new Vector3(0.1f, 0.1f, 0.1f);
+                            //Vector3 maisuPos = new Vector3(36.0f, 52.5f, 0.0f) + Vector3.right * 1.857f * koma_index * 5f;
+                    Vector3 maisuPos = text2.transform.position + Vector3.right * 1.857f * (koma_index - 7) * 5f;
+                    //Vector3 maisuPos = new Vector3(-21.4f, -27.9f, -577.8f) + Vector3.right * 1.857f * (koma_index-7) * 5f;
+
+                    Vector3 maisuSize = new Vector3(0.1f, 0.1f, 0.1f);
                             GameObject text = Instantiate(textPrefab, maisuPos, text2.transform.rotation) as GameObject;
                             text.transform.localScale = maisuSize;
                             maisuuTexts[koma_index] = text;
