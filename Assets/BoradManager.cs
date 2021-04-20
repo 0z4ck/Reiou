@@ -529,7 +529,7 @@ public class BoradManager : MonoBehaviour
                 playerKomadai = whiteKomadai;
                 komadaiObject = komadai;
                 
-                komadaip = komadaiObject.transform.position + Vector3.left * 1.2857f * koma_index * 0.5f + Vector3.right;
+                komadaip = new Vector3(1.0f, 0f, -0.7f) + Vector3.right * (7 - koma_index);
 
             }
             else
@@ -550,7 +550,7 @@ public class BoradManager : MonoBehaviour
                 if (Chessmans[x, y].GetType() == typeof(To)) koma_index = 15;
                 playerKomadai = blackKomadai;
                 komadaiObject = komadaiteki;
-                komadaip = komadaiObject.transform.position + Vector3.right * 1.2857f * (koma_index-8) * 0.5f + Vector3.left;
+                komadaip = new Vector3(8.2f, 0f, -8.2f) + Vector3.right * (koma_index-8);
             }
             
                 {
@@ -574,9 +574,8 @@ public class BoradManager : MonoBehaviour
 
                     Debug.Log(text2.transform.position);
 
-                    Vector3 maisuPos = new Vector3(1.2f, 0f, -0.2f) + Vector3.right * 1.857f * (koma_index - 7)* 5f;
-                    //Vector3 maisuPos = text2.transform.position + Vector3.right * 1.857f * (koma_index - 7) * 5f;
-                    //Vector3 maisuPos = new Vector3(-21.4f, -27.9f, -577.8f) + Vector3.right * 1.857f * (koma_index-7) * 5f;
+                    Vector3 maisuPos = new Vector3(1.2f, 0f, -0.2f) + Vector3.right * (7 - koma_index);
+                    //Vector3 maisuPos = new Vector3(6.2f, 0f, -0.2f) + Vector3.right * 1.857f * (koma_index - 7) * 5f;
 
                     Vector3 maisuSize = new Vector3(0.0015f, 0.0015f, 0.0015f);
                             GameObject text = Instantiate(textPrefab, maisuPos, text2.transform.rotation) as GameObject;
@@ -585,6 +584,7 @@ public class BoradManager : MonoBehaviour
                             text.transform.SetParent(canvas.transform);
                             Text texttext = text.GetComponent<Text>();
                             texttext.text = maisuu.ToString();
+                            if (isWhiteTurn) text.transform.Rotate(new Vector3(90,0,0));
                         }
                         else
                         {
