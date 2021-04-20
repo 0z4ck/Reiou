@@ -28,7 +28,7 @@ public class BoradManager : MonoBehaviour
 
     private int koma_id = -1;
 
-    private double selectionXShousuu = -1;
+    private float selectionXShousuu = -1;
     private float selectionYShousuu = -1;
 
     public List<GameObject> chessmanPrefabs;
@@ -68,16 +68,16 @@ public class BoradManager : MonoBehaviour
         //マウスクリックされた
         {
             //Debug.Log(selectionX);
+
             
-            //if(selectionX)
-            if (selectionX >= 0 && selectionY >= 0)
-            //盤面内でクリックがあった
+            if ((selectionX >= 0 && selectionY >= 0) || (selectionYShousuu < -0.3 && selectionYShousuu > -1.1) || (selectionYShousuu<10.1&&selectionYShousuu>9.3))
+            //盤面内でクリックがあった 又は　自分の駒台でクリックがあった　又は　敵の駒台でクリックがあった
             {
                 if (selectedChessman == null && !isNariSelection)
                 {
                     //何も選択されていない状態でのクリックなのでその位置の駒を選択状態にする
                     //Select the chessman
-                    SelectChessman(selectionX, selectionY);
+                    SelectChessman(selectionYShousuu, selectionXShousuu, selectionX, selectionY);
 
                 }
                 else
@@ -164,11 +164,17 @@ public class BoradManager : MonoBehaviour
         }
     }
 
-    private void SelectChessman(int x,int y)
+    private void SelectChessman(float xf, float yf, int x,int y)
     {
+        if(isWhiteTurn && (yf < -0.3 && yf > -1.1))
+            //自分の駒台クリック
+        {
+            int rounded_x = Mathf.RoundToInt(xf);
+
+            if (rounded_x >= 1 && rounded_x <= 8)
+                koma_id = 8 - rounded_x;
+        }
         //Chessmansは駒のGameObjectが格納された9x9の二次元配列
-
-
         //クリックされた座標に駒がないとき
         //クリックをなかったことにする
         if (Chessmans[x, y] == null)
@@ -554,7 +560,7 @@ public class BoradManager : MonoBehaviour
                 if (Chessmans[x, y].GetType() == typeof(To)) koma_index = 15;
                 playerKomadai = blackKomadai;
                 komadaiObject = komadaiteki;
-                komadaip = new Vector3(1.2f, 0f, 9.7f) + Vector3.right * (koma_index-8);
+                komadaip = new Vector3(1.0f, 0f, 9.7f) + Vector3.right * (koma_index-8);
                 maisuPos = komadaip - new Vector3(0.2f, 0f, 0.5f);
             }
             
