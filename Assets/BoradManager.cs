@@ -584,7 +584,7 @@ public class BoradManager : MonoBehaviour
                             text.transform.SetParent(canvas.transform);
                             Text texttext = text.GetComponent<Text>();
                             texttext.text = maisuu.ToString();
-                            if (isWhiteTurn) text.transform.Rotate(new Vector3(90,0,0));
+                            if (!isWhiteTurn) text.transform.Rotate(new Vector3(90,0,0));
                         }
                         else
                         {
