@@ -180,7 +180,7 @@ public class BoradManager : MonoBehaviour
             if (rounded_x >= 1 && rounded_x <= 8)
                 koma_id = 8 - rounded_x;
 
-            if (maisuuInt[koma_id] >= 2)
+            if (maisuuInt[koma_id] >= 1)
             {
                 selectedChessman = whiteKomadai[koma_id] ;
                 allowedMoves = selectedChessman.PossibleMove();
