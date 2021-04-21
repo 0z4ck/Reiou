@@ -531,7 +531,7 @@ public class BoradManager : MonoBehaviour
                 whiteKomadai[koma_id] = motigoma.GetComponent<Chessman>();
                 whiteKomadai[koma_id].SetPosition(-1, -1);
             }
-            if (maisuuInt[koma_id] == 1)
+            if (maisuuInt[koma_id] <= 1)
             {
                 Destroy(maisuuTexts[koma_id]);
             }
