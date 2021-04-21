@@ -385,7 +385,7 @@ public class BoradManager : MonoBehaviour
                     return;
 
                 }
-                else if (y == 0)
+                else if (!isWhiteTurn && y == 0)
                 {
                     activeChessman.Remove(selectedChessman.gameObject);
                     Destroy(selectedChessman.gameObject);
