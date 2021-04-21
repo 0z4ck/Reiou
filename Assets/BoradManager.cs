@@ -37,8 +37,11 @@ public class BoradManager : MonoBehaviour
 
     private List<GameObject> activeChessman;
 
-    private List<Chessman> whiteKomadai = new List<Chessman>();
-    private List<Chessman> blackKomadai = new List<Chessman>();
+    //private List<Chessman> whiteKomadai = new List<Chessman>();
+    private Chessman[] whiteKomadai = new Chessman[28];
+
+    //private List<Chessman> blackKomadai = new List<Chessman>();
+    private Chessman[] blackKomadai = new Chessman[28];
 
     private List<GameObject> nariSentaku = new List<GameObject>();
    
@@ -48,6 +51,8 @@ public class BoradManager : MonoBehaviour
     private bool isNariSelection=false;
 
     private GameObject[] maisuuTexts = new GameObject[28];
+
+    private int[] maisuuInt = new int[28];
 
 
     private void Start()
@@ -67,7 +72,7 @@ public class BoradManager : MonoBehaviour
 
         //マウスクリックされた
         {
-            //Debug.Log(selectionX);
+            
 
             
             if ((selectionX >= 0 && selectionY >= 0) || (selectionYShousuu < -0.3 && selectionYShousuu > -1.1) || (selectionYShousuu<10.1&&selectionYShousuu>9.3))
@@ -77,13 +82,13 @@ public class BoradManager : MonoBehaviour
                 {
                     //何も選択されていない状態でのクリックなのでその位置の駒を選択状態にする
                     //Select the chessman
-                    SelectChessman(selectionYShousuu, selectionXShousuu, selectionX, selectionY);
+                    SelectChessman(selectionXShousuu, selectionYShousuu, selectionX, selectionY);
 
                 }
                 else
                 {
                     
-                    //Debug.Log(selectedChessman.CurrentY);
+                    
                     if (isNariSelection)
                     {
                         //dumpBoard(Chessmans);
@@ -134,7 +139,7 @@ public class BoradManager : MonoBehaviour
                                 Destroy(selectedChessman.gameObject);
 
                                 selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
-                                //Debug.Log(Chessmans[xHoji, yHoji] != null);
+                                
                                 //dumpBoard(Chessmans);
                                 commitMove(xHoji, yHoji);
 
@@ -166,6 +171,7 @@ public class BoradManager : MonoBehaviour
 
     private void SelectChessman(float xf, float yf, int x,int y)
     {
+        Debug.Log(yf);
         if(isWhiteTurn && (yf < -0.3 && yf > -1.1))
             //自分の駒台クリック
         {
@@ -173,6 +179,14 @@ public class BoradManager : MonoBehaviour
 
             if (rounded_x >= 1 && rounded_x <= 8)
                 koma_id = 8 - rounded_x;
+
+            if (maisuuInt[koma_id] >= 2)
+            {
+                selectedChessman = whiteKomadai[koma_id] ;
+                allowedMoves = selectedChessman.PossibleMove();
+                BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
+            }
+            return;
         }
         //Chessmansは駒のGameObjectが格納された9x9の二次元配列
         //クリックされた座標に駒がないとき
@@ -329,7 +343,6 @@ public class BoradManager : MonoBehaviour
                     koma_id = 21;
                     xHoji = x;
                     yHoji = y;
-                    //Debug.Log(Chessmans[x, y]);
                     //dumpBoard(Chessmans);
                     return;
 
@@ -473,7 +486,6 @@ public class BoradManager : MonoBehaviour
             }
             
             //ここまで
-            //Debug.Log(Chessmans[x, y] != null);
             commitMove(x, y);
 
         }
@@ -502,18 +514,40 @@ public class BoradManager : MonoBehaviour
         }
         //移動元をnullにする
 
-        Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
+        if (selectedChessman.CurrentY != -1)
+        {
+            Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
 
             selectedChessman.transform.position = GetTileCenter(x, y);
             selectedChessman.SetPosition(x, y);
+        }
+        else
+        {
+            maisuuInt[koma_id]--;
 
-        //Debug.Log(Chessmans[x, y] != null);
+            if (maisuuInt[koma_id] != 0)
+            {
+                GameObject motigoma = Instantiate(chessmanPrefabs[koma_id], selectedChessman.transform.position, orientation) as GameObject;
+                whiteKomadai[koma_id] = motigoma.GetComponent<Chessman>();
+                whiteKomadai[koma_id].SetPosition(-1, -1);
+            }
+            if (maisuuInt[koma_id] == 1)
+            {
+                Destroy(maisuuTexts[koma_id]);
+            }
+            else
+            {
+                maisuuTexts[koma_id].GetComponent<Text>().text = maisuuInt[koma_id].ToString();
+            }
+            selectedChessman.transform.position = GetTileCenter(x, y);
+            selectedChessman.SetPosition(x, y);
+        }
 
         //成り選択画面の後Chessmans[x, y] がnullになっている ※解決済み
         if (Chessmans[x, y] != null)
             {
                 int koma_index;
-                List<Chessman> playerKomadai;
+                Chessman[] playerKomadai;
                 GameObject komadaiObject;
                 Vector3 komadaip;
                 Vector3 maisuPos;
@@ -565,25 +599,29 @@ public class BoradManager : MonoBehaviour
             }
             
                 {
-                        playerKomadai.Add(Chessmans[x, y]);
+                        //playerKomadai[koma_index] = Chessmans[x, y];
+                        maisuuInt[koma_index]++;
 
                         int maisuu = 0;
 
-                        foreach (Chessman koma in playerKomadai)
+                        /*foreach (Chessman koma in playerKomadai)
                         {
                             if (koma.GetType() == Chessmans[x, y].GetType())
                                 maisuu++;
-                        }
+                        }*/
+                        maisuu = maisuuInt[koma_index];
+
                         if (maisuu == 1)
                         {
                             //Vector3 komadaip = komadaiObject.transform.position + Vector3.left * 1.2857f * koma_index * 0.5f + Vector3.right;
                             GameObject motigoma = Instantiate(chessmanPrefabs[koma_index], komadaip, orientation) as GameObject;
+                    playerKomadai[koma_index] = motigoma.GetComponent<Chessman>();
+                    playerKomadai[koma_index].SetPosition(-1, -1);
                         }
                         else if (maisuu == 2)
                         {
                             GameObject text2 = GameObject.Find("Text");
 
-                    Debug.Log(text2.transform.position);
 
                     //Vector3 maisuPos = new Vector3(1.2f, 0f, -0.2f) + Vector3.right * (7 - koma_index);
                     //Vector3 maisuPos = new Vector3(6.2f, 0f, -0.2f) + Vector3.right * 1.857f * (koma_index - 7) * 5f;
@@ -634,7 +672,6 @@ public class BoradManager : MonoBehaviour
             selectionX = (int)hit.point.x;
             selectionXShousuu = hit.point.x;
             selectionYShousuu = hit.point.z;
-            Debug.Log(selectionYShousuu);
             selectionY = (int)hit.point.z;
         }
         else
