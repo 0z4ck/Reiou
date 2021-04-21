@@ -188,6 +188,22 @@ public class BoradManager : MonoBehaviour
             }
             return;
         }
+        if (!isWhiteTurn && (yf < 10.1 && yf > 9.3))
+        //相手の駒台クリック
+        {
+            int rounded_x = Mathf.RoundToInt(xf);
+
+            if (rounded_x >= 1 && rounded_x <= 8)
+                koma_id = 8 - rounded_x;
+
+            if (maisuuInt[koma_id] >= 1)
+            {
+                selectedChessman = whiteKomadai[koma_id];
+                allowedMoves = selectedChessman.PossibleMove();
+                BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
+            }
+            return;
+        }
         //Chessmansは駒のGameObjectが格納された9x9の二次元配列
         //クリックされた座標に駒がないとき
         //クリックをなかったことにする
@@ -672,7 +688,7 @@ public class BoradManager : MonoBehaviour
             selectionX = (int)hit.point.x;
             selectionXShousuu = hit.point.x;
             selectionYShousuu = hit.point.z;
-            selectionY = (int)hit.point.z;
+            selectionY = ((int)(hit.point.z+1))-1;
         }
         else
             {
