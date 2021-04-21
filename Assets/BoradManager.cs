@@ -491,7 +491,7 @@ public class BoradManager : MonoBehaviour
 
                 }
 
-                else if (y == 0 || y == 1)
+                else if (!isWhiteTurn && (y == 0 || y == 1))
                 {
                     activeChessman.Remove(selectedChessman.gameObject);
                     Destroy(selectedChessman.gameObject);
