@@ -16,7 +16,7 @@ public class hu : Chessman
             if (CurrentY == -1)
             {
                 for (int i = 0; i < 9; i++)
-                    for (int j = 0; j < 9; j++)
+                    for (int j = 0; j < 8; j++)
                         if (BoradManager.Instance.Chessmans[i, j] == null)
                             r[i, j] = true;
 
