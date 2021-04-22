@@ -172,9 +172,10 @@ public class BoradManager : MonoBehaviour
     private void SelectChessman(float xf, float yf, int x,int y)
     {
         //Debug.Log(yf);
-        if(isWhiteTurn && (yf < -0.3 && yf > -1.1))
+        if((yf < -0.3 && yf > -1.1))
             //自分の駒台クリック
         {
+            if (!isWhiteTurn) return;
             int rounded_x = Mathf.RoundToInt(xf);
 
             if (rounded_x >= 1 && rounded_x <= 8)
@@ -188,9 +189,10 @@ public class BoradManager : MonoBehaviour
             }
             return;
         }
-        if (!isWhiteTurn && (yf < 10.1 && yf > 9.3))
+        if ((yf < 10.1 && yf > 9.3))
         //相手の駒台クリック
         {
+            if (isWhiteTurn) return;
             int rounded_x = Mathf.RoundToInt(xf);
 
             if (rounded_x >= 1 && rounded_x <= 8)
