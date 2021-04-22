@@ -14,84 +14,95 @@ public class kaku : Chessman
         // Top Left
         i = CurrentX;
         j = CurrentY;
-        while (true)
+        if (CurrentY == -1)
         {
-            i--;
-            j++;
-            if (i < 0 || j >= 9)
-                break;
-            c = BoradManager.Instance.Chessmans[i, j];
-            if (c == null)
-                r[i, j] = true;
-            else
-            {
-                if (isWhite != c.isWhite)
-                    r[i, j] = true;
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+                    if (BoradManager.Instance.Chessmans[i, j] == null)
+                        r[i, j] = true;
 
-                break;
-            }
         }
-
-        // Top Right
-        i = CurrentX;
-        j = CurrentY;
-        while (true)
+        else
         {
-            i++;
-            j++;
-            if (i >= 9 || j >= 9)
-                break;
-            c = BoradManager.Instance.Chessmans[i, j];
-            if (c == null)
-                r[i, j] = true;
-            else
+            while (true)
             {
-                if (isWhite != c.isWhite)
+                i--;
+                j++;
+                if (i < 0 || j >= 9)
+                    break;
+                c = BoradManager.Instance.Chessmans[i, j];
+                if (c == null)
                     r[i, j] = true;
+                else
+                {
+                    if (isWhite != c.isWhite)
+                        r[i, j] = true;
 
-                break;
+                    break;
+                }
             }
-        }
 
-        // Down Left
-        i = CurrentX;
-        j = CurrentY;
-        while (true)
-        {
-            i--;
-            j--;
-            if (i < 0 || j < 0)
-                break;
-            c = BoradManager.Instance.Chessmans[i, j];
-            if (c == null)
-                r[i, j] = true;
-            else
+            // Top Right
+            i = CurrentX;
+            j = CurrentY;
+            while (true)
             {
-                if (isWhite != c.isWhite)
+                i++;
+                j++;
+                if (i >= 9 || j >= 9)
+                    break;
+                c = BoradManager.Instance.Chessmans[i, j];
+                if (c == null)
                     r[i, j] = true;
+                else
+                {
+                    if (isWhite != c.isWhite)
+                        r[i, j] = true;
 
-                break;
+                    break;
+                }
             }
-        }
 
-        // Down Right
-        i = CurrentX;
-        j = CurrentY;
-        while (true)
-        {
-            i++;
-            j--;
-            if (i >= 9 || j < 0)
-                break;
-            c = BoradManager.Instance.Chessmans[i, j];
-            if (c == null)
-                r[i, j] = true;
-            else
+            // Down Left
+            i = CurrentX;
+            j = CurrentY;
+            while (true)
             {
-                if (isWhite != c.isWhite)
+                i--;
+                j--;
+                if (i < 0 || j < 0)
+                    break;
+                c = BoradManager.Instance.Chessmans[i, j];
+                if (c == null)
                     r[i, j] = true;
+                else
+                {
+                    if (isWhite != c.isWhite)
+                        r[i, j] = true;
 
-                break;
+                    break;
+                }
+            }
+
+            // Down Right
+            i = CurrentX;
+            j = CurrentY;
+            while (true)
+            {
+                i++;
+                j--;
+                if (i >= 9 || j < 0)
+                    break;
+                c = BoradManager.Instance.Chessmans[i, j];
+                if (c == null)
+                    r[i, j] = true;
+                else
+                {
+                    if (isWhite != c.isWhite)
+                        r[i, j] = true;
+
+                    break;
+                }
             }
         }
 
