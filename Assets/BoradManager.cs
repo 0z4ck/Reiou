@@ -247,261 +247,263 @@ public class BoradManager : MonoBehaviour
         Debug.Log(y);*/
         if (allowedMoves[x, y])
         {
-            //ここまで
-
-            //飛車の成りに関して
-            if (selectedChessman.GetType() == typeof(hisya))
+            if (selectedChessman.CurrentY != -1)
             {
-                if (isWhiteTurn && (y >= 6 || oldSelectionY >= 6))
+                //ここまで
+
+                //飛車の成りに関して
+                if (selectedChessman.GetType() == typeof(hisya))
                 {
-                    GameObject go = Instantiate(chessmanPrefabs[1], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[16], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 16;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
+                    if (isWhiteTurn && (y >= 6 || oldSelectionY >= 6))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[1], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[16], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 16;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+                    }
+                    if (!isWhiteTurn && (y <= 2 || oldSelectionY <= 2))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[9], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[22], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 22;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+                    }
                 }
-                if (!isWhiteTurn && (y <= 2 || oldSelectionY <= 2))
+                //角の成りに関して
+                if (selectedChessman.GetType() == typeof(kaku))
                 {
-                    GameObject go = Instantiate(chessmanPrefabs[9], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[22], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 22;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
+                    if (isWhiteTurn && (y >= 6 || oldSelectionY >= 6))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[2], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[17], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 17;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+                    }
+                    if (!isWhiteTurn && (y <= 2 || oldSelectionY <= 2))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[10], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[23], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 23;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+                    }
+                }
+                //銀の成りに関して
+                if (selectedChessman.GetType() == typeof(gin))
+                {
+                    if (isWhiteTurn && (y >= 6 || oldSelectionY >= 6))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[4], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[18], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 18;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+                    }
+                    if (!isWhiteTurn && (y <= 2 || oldSelectionY <= 2))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[12], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[24], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 24;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+                    }
+                }
+                //歩の成りこみに関して
+                if (selectedChessman.GetType() == typeof(hu))
+                {
+                    if (isWhiteTurn && (y == 6 || y == 7))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[7], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[21], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 21;
+                        xHoji = x;
+                        yHoji = y;
+                        //dumpBoard(Chessmans);
+                        return;
+
+                    }
+                    if (isWhiteTurn && y == 8)
+                    {
+                        activeChessman.Remove(selectedChessman.gameObject);
+                        Destroy(selectedChessman.gameObject);
+                        SpawnChessman(21, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                        selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
+                    }
+                    if (!isWhiteTurn && (y == 1 || y == 2))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[15], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[27], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 27;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+
+                    }
+                    else if (!isWhiteTurn && y == 0)
+                    {
+                        activeChessman.Remove(selectedChessman.gameObject);
+                        Destroy(selectedChessman.gameObject);
+                        SpawnChessman(27, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                        selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
+                    }
+                }
+                //ここまで
+
+                //こっから香が9段目、1段目に行ったら自動的に成香に成るように
+                if (selectedChessman.GetType() == typeof(kyou))
+                {
+                    if (isWhiteTurn && (y == 6 || y == 7))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[6], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[20], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 20;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+
+                    }
+
+
+                    if (isWhiteTurn && y == 8)
+                    {
+                        activeChessman.Remove(selectedChessman.gameObject);
+                        Destroy(selectedChessman.gameObject);
+                        SpawnChessman(20, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                        selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
+                    }
+
+                    if (!isWhiteTurn && (y == 1 || y == 2))
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[14], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[26], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 26;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+
+                    }
+                    else if (!isWhiteTurn && y == 0)
+                    {
+                        activeChessman.Remove(selectedChessman.gameObject);
+                        Destroy(selectedChessman.gameObject);
+                        SpawnChessman(26, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                        selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
+                    }
+                }
+                //ここまで
+
+                //こっから桂が8,9段目、1,2段目に行ったら自動的に成桂に成るように
+                if (selectedChessman.GetType() == typeof(kei))
+                {
+                    if (isWhiteTurn && y == 6)
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[5], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[19], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 19;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+
+                    }
+                    if (y == 8 || y == 7)
+                    {
+                        activeChessman.Remove(selectedChessman.gameObject);
+                        Destroy(selectedChessman.gameObject);
+                        SpawnChessman(19, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                        selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
+                    }
+                    //ダサいやり方で改善の余地あり
+
+                    if (!isWhiteTurn && y == 2)
+                    {
+                        GameObject go = Instantiate(chessmanPrefabs[13], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
+                        GameObject go2 = Instantiate(chessmanPrefabs[25], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
+                        go.transform.SetParent(transform);
+                        go2.transform.SetParent(transform);
+                        nariSentaku.Add(go);
+                        nariSentaku.Add(go2);
+                        isNariSelection = true;
+                        koma_id = 25;
+                        xHoji = x;
+                        yHoji = y;
+                        return;
+
+                    }
+
+                    else if (!isWhiteTurn && (y == 0 || y == 1))
+                    {
+                        activeChessman.Remove(selectedChessman.gameObject);
+                        Destroy(selectedChessman.gameObject);
+                        SpawnChessman(25, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                        selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
+                    }
+
                 }
             }
-            //角の成りに関して
-            if (selectedChessman.GetType() == typeof(kaku))
-            {
-                if (isWhiteTurn && (y >= 6 || oldSelectionY >= 6))
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[2], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[17], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 17;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-                }
-                if (!isWhiteTurn && (y <= 2 || oldSelectionY <= 2))
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[10], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[23], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 23;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-                }
-            }
-            //銀の成りに関して
-            if (selectedChessman.GetType() == typeof(gin))
-            {
-                if (isWhiteTurn && (y >= 6 || oldSelectionY >= 6))
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[4], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[18], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 18;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-                }
-                if (!isWhiteTurn && (y <= 2 || oldSelectionY <= 2))
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[12], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[24], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 24;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-                }
-            }
-            //歩の成りこみに関して
-            if (selectedChessman.GetType() == typeof(hu))
-            {
-                if (isWhiteTurn && (y == 6 || y == 7))
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[7], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[21], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 21;
-                    xHoji = x;
-                    yHoji = y;
-                    //dumpBoard(Chessmans);
-                    return;
-
-                }
-                if (isWhiteTurn && y == 8)
-                {
-                    activeChessman.Remove(selectedChessman.gameObject);
-                    Destroy(selectedChessman.gameObject);
-                    SpawnChessman(21, selectedChessman.CurrentX, selectedChessman.CurrentY);
-                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
-                }
-                if (!isWhiteTurn && (y == 1 || y == 2))
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[15], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[27], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 27;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-
-                }
-                else if (!isWhiteTurn && y == 0)
-                {
-                    activeChessman.Remove(selectedChessman.gameObject);
-                    Destroy(selectedChessman.gameObject);
-                    SpawnChessman(27, selectedChessman.CurrentX, selectedChessman.CurrentY);
-                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
-                }
-            }
-            //ここまで
-
-            //こっから香が9段目、1段目に行ったら自動的に成香に成るように
-            if (selectedChessman.GetType() == typeof(kyou))
-            {
-                if (isWhiteTurn && (y == 6 || y == 7))
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[6], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[20], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 20;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-
-                }
-
-
-                if (isWhiteTurn && y == 8)
-                {
-                    activeChessman.Remove(selectedChessman.gameObject);
-                    Destroy(selectedChessman.gameObject);
-                    SpawnChessman(20, selectedChessman.CurrentX, selectedChessman.CurrentY);
-                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
-                }
-
-                if (!isWhiteTurn && (y == 1 || y == 2))
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[14], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[26], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 26;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-
-                }
-                else if (!isWhiteTurn && y == 0)
-                {
-                    activeChessman.Remove(selectedChessman.gameObject);
-                    Destroy(selectedChessman.gameObject);
-                    SpawnChessman(26, selectedChessman.CurrentX, selectedChessman.CurrentY);
-                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
-                }
-            }
-            //ここまで
-
-            //こっから桂が8,9段目、1,2段目に行ったら自動的に成桂に成るように
-            if (selectedChessman.GetType() == typeof(kei))
-            {
-                if (isWhiteTurn && y == 6)
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[5], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[19], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 19;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-
-                }
-                if (y == 8 || y == 7)
-                {
-                    activeChessman.Remove(selectedChessman.gameObject);
-                    Destroy(selectedChessman.gameObject);
-                    SpawnChessman(19, selectedChessman.CurrentX, selectedChessman.CurrentY);
-                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
-                }
-                //ダサいやり方で改善の余地あり
-
-                if (!isWhiteTurn && y == 2)
-                {
-                    GameObject go = Instantiate(chessmanPrefabs[13], GetTileRightEdge(selectionX, selectionY), orientation) as GameObject;
-                    GameObject go2 = Instantiate(chessmanPrefabs[25], GetTileLeftEdge(selectionX, selectionY), orientation) as GameObject;
-                    go.transform.SetParent(transform);
-                    go2.transform.SetParent(transform);
-                    nariSentaku.Add(go);
-                    nariSentaku.Add(go2);
-                    isNariSelection = true;
-                    koma_id = 25;
-                    xHoji = x;
-                    yHoji = y;
-                    return;
-
-                }
-
-                else if (!isWhiteTurn && (y == 0 || y == 1))
-                {
-                    activeChessman.Remove(selectedChessman.gameObject);
-                    Destroy(selectedChessman.gameObject);
-                    SpawnChessman(25, selectedChessman.CurrentX, selectedChessman.CurrentY);
-                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
-                }
-
-            }
-            
             //ここまで
             commitMove(x, y);
 
