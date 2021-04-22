@@ -9,9 +9,6 @@ public class hisya : Chessman
         bool[,] r = new bool[9, 9];
 
         Chessman c;
-        int i;
-
-        // Right
         if (CurrentY == -1)
         {
             for (int i = 0; i < 9; i++)
@@ -22,6 +19,10 @@ public class hisya : Chessman
         }
         else
         {
+            int i;
+
+        // Right
+        
             i = CurrentX;
             while (true)
             {

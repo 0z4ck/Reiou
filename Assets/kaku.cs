@@ -9,11 +9,6 @@ public class kaku : Chessman
         bool[,] r = new bool[9, 9];
 
         Chessman c;
-        int i, j;
-
-        // Top Left
-        i = CurrentX;
-        j = CurrentY;
         if (CurrentY == -1)
         {
             for (int i = 0; i < 9; i++)
@@ -24,6 +19,12 @@ public class kaku : Chessman
         }
         else
         {
+            int i, j;
+
+        // Top Left
+        i = CurrentX;
+        j = CurrentY;
+        
             while (true)
             {
                 i--;
