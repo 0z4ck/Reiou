@@ -194,11 +194,11 @@ public class BoradManager : MonoBehaviour
             int rounded_x = Mathf.RoundToInt(xf);
 
             if (rounded_x >= 1 && rounded_x <= 8)
-                koma_id = 8 - rounded_x;
+                koma_id = 7 + rounded_x;
 
             if (maisuuInt[koma_id] >= 1)
             {
-                selectedChessman = whiteKomadai[koma_id];
+                selectedChessman = blackKomadai[koma_id];
                 allowedMoves = selectedChessman.PossibleMove();
                 BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
             }
