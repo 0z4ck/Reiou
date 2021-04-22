@@ -11,50 +11,72 @@ public class kyou : Chessman
 
         if (isWhite)
         {
-
-            Chessman c;
-            int i;
-            // Zibun Up
-            i = CurrentY;
-            while (true)
+            if (CurrentY == -1)
             {
-                i++;
-                if (i >= 9)
-                    break;
+                for (int i = 0; i < 9; i++)
+                    for (int j = 0; j < 8; j++)
+                        if (BoradManager.Instance.Chessmans[i, j] == null)
+                            r[i, j] = true;
 
-                c = BoradManager.Instance.Chessmans[CurrentX, i];
-                if (c == null)
-                    r[CurrentX, i] = true;
-                else
+            }
+            else
+            {
+
+                Chessman c;
+                int i;
+                // Zibun Up
+                i = CurrentY;
+                while (true)
                 {
-                    if (c.isWhite != isWhite)
-                        r[CurrentX, i] = true;
+                    i++;
+                    if (i >= 9)
+                        break;
 
-                    break;
+                    c = BoradManager.Instance.Chessmans[CurrentX, i];
+                    if (c == null)
+                        r[CurrentX, i] = true;
+                    else
+                    {
+                        if (c.isWhite != isWhite)
+                            r[CurrentX, i] = true;
+
+                        break;
+                    }
                 }
             }
         }
         else
         {
-            Chessman c;
-            int i;
-            // Teki Up
-            i = CurrentY;
-            while (true)
+            if (CurrentY == -1)
             {
-                i--;
-                if (i < 0)
-                    break;
+                for (int i = 0; i < 9; i++)
+                    for (int j = 1; j < 9; j++)
+                        if (BoradManager.Instance.Chessmans[i, j] == null)
+                            r[i, j] = true;
 
-                c = BoradManager.Instance.Chessmans[CurrentX, i];
-                if (c == null)
-                    r[CurrentX, i] = true;
-                else
+            }
+            else
+            {
+                Chessman c;
+                int i;
+                // Teki Up
+                i = CurrentY;
+                while (true)
                 {
-                    if (c.isWhite != isWhite)
-                        r[CurrentX, i] = true;
+                    i--;
+                    if (i < 0)
+                        break;
 
-                    break;
+                    c = BoradManager.Instance.Chessmans[CurrentX, i];
+                    if (c == null)
+                        r[CurrentX, i] = true;
+                    else
+                    {
+                        if (c.isWhite != isWhite)
+                            r[CurrentX, i] = true;
+
+                        break;
+                    }
                 }
             }
         }
