@@ -84,63 +84,74 @@ public class hu : Chessman
         }
         else
         {
-            // Teki Up
-            if (CurrentY != 0)
+            if (CurrentY == -1)
             {
-                c = BoradManager.Instance.Chessmans[CurrentX, CurrentY - 1];
-                if (c == null)
-                    r[CurrentX, CurrentY - 1] = true;
-                else if (isWhite != c.isWhite)
-                    r[CurrentX, CurrentY - 1] = true;
-            }
-            //Diagonal Left
-            /*
-            if (CurrentX != 0 && CurrentY != 0)
-            {
-                c = BoradManager.Instance.Chessmans[CurrentX - 1, CurrentY - 1];
-                if (c != null && c.isWhite)
-                    r[CurrentX - 1, CurrentY - 1] = true;
-            }
+                for (int i = 0; i < 9; i++)
+                    for (int j = 0; j < 9; j++)
+                        if (BoradManager.Instance.Chessmans[i, j] == null)
+                            r[i, j] = true;
 
-            //Diagonal Right
-            if (CurrentX != 8 && CurrentY != 0)
-            {
-                c = BoradManager.Instance.Chessmans[CurrentX + 1, CurrentY - 1];
-                if (c != null && c.isWhite)
-                    r[CurrentX + 1, CurrentY - 1] = true;
             }
-            
-            //Middle
-            if (CurrentY != 0)
+            else
             {
-                c = BoradManager.Instance.Chessmans[CurrentX, CurrentY - 1];
-                if (c == null)
-                    r[CurrentX, CurrentY - 1] = true;
-            }
-            //改善の余地あり
-            //なぜかこっちは駒が取れない件について
-            
-            
-            if (CurrentX != 0 && CurrentY != 0)
-            {
-                c = BoradManager.Instance.Chessmans[CurrentX, CurrentY - 1];
-                if (c != null && c.isWhite)
-                    r[CurrentX, CurrentY - 1] = true;
-            }
-            */
+                // Teki Up
+                if (CurrentY != 0)
+                {
+                    c = BoradManager.Instance.Chessmans[CurrentX, CurrentY - 1];
+                    if (c == null)
+                        r[CurrentX, CurrentY - 1] = true;
+                    else if (isWhite != c.isWhite)
+                        r[CurrentX, CurrentY - 1] = true;
+                }
+                //Diagonal Left
+                /*
+                if (CurrentX != 0 && CurrentY != 0)
+                {
+                    c = BoradManager.Instance.Chessmans[CurrentX - 1, CurrentY - 1];
+                    if (c != null && c.isWhite)
+                        r[CurrentX - 1, CurrentY - 1] = true;
+                }
+
+                //Diagonal Right
+                if (CurrentX != 8 && CurrentY != 0)
+                {
+                    c = BoradManager.Instance.Chessmans[CurrentX + 1, CurrentY - 1];
+                    if (c != null && c.isWhite)
+                        r[CurrentX + 1, CurrentY - 1] = true;
+                }
+
+                //Middle
+                if (CurrentY != 0)
+                {
+                    c = BoradManager.Instance.Chessmans[CurrentX, CurrentY - 1];
+                    if (c == null)
+                        r[CurrentX, CurrentY - 1] = true;
+                }
+                //改善の余地あり
+                //なぜかこっちは駒が取れない件について
 
 
-            //Middle on first move
-            /*
-            if (CurrentY == 6)
-                //歩が七段目にいるとき
-            {
-                c = BoradManager.Instance.Chessmans [CurrentX, CurrentY - 1];
-                c2 = BoradManager.Instance.Chessmans [CurrentX, CurrentY - 2];
-                if (c == null & c2 == null)
-                    r[CurrentX, CurrentY - 2] = true;
+                if (CurrentX != 0 && CurrentY != 0)
+                {
+                    c = BoradManager.Instance.Chessmans[CurrentX, CurrentY - 1];
+                    if (c != null && c.isWhite)
+                        r[CurrentX, CurrentY - 1] = true;
+                }
+                */
+
+
+                //Middle on first move
+                /*
+                if (CurrentY == 6)
+                    //歩が七段目にいるとき
+                {
+                    c = BoradManager.Instance.Chessmans [CurrentX, CurrentY - 1];
+                    c2 = BoradManager.Instance.Chessmans [CurrentX, CurrentY - 2];
+                    if (c == null & c2 == null)
+                        r[CurrentX, CurrentY - 2] = true;
+                }
+                */
             }
-            */
         }
 
         return r;

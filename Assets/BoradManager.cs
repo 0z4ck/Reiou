@@ -171,7 +171,7 @@ public class BoradManager : MonoBehaviour
 
     private void SelectChessman(float xf, float yf, int x,int y)
     {
-        Debug.Log(yf);
+        //Debug.Log(yf);
         if(isWhiteTurn && (yf < -0.3 && yf > -1.1))
             //自分の駒台クリック
         {
@@ -243,9 +243,10 @@ public class BoradManager : MonoBehaviour
 
     private void MoveChessman(int x, int y)
     {
+        /*Debug.Log(selectedChessman.CurrentY);
+        Debug.Log(y);*/
         if (allowedMoves[x, y])
         {
-            
             //ここまで
 
             //飛車の成りに関して
@@ -367,8 +368,8 @@ public class BoradManager : MonoBehaviour
                 {
                     activeChessman.Remove(selectedChessman.gameObject);
                     Destroy(selectedChessman.gameObject);
-                    SpawnChessman(21, x, y);
-                    selectedChessman = Chessmans[x, y];
+                    SpawnChessman(21, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
                 }
                 if (!isWhiteTurn && (y == 1 || y == 2))
                 {
@@ -389,8 +390,8 @@ public class BoradManager : MonoBehaviour
                 {
                     activeChessman.Remove(selectedChessman.gameObject);
                     Destroy(selectedChessman.gameObject);
-                    SpawnChessman(27, x, y);
-                    selectedChessman = Chessmans[x, y];
+                    SpawnChessman(27, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
                 }
             }
             //ここまで
@@ -419,8 +420,8 @@ public class BoradManager : MonoBehaviour
                 {
                     activeChessman.Remove(selectedChessman.gameObject);
                     Destroy(selectedChessman.gameObject);
-                    SpawnChessman(20, x, y);
-                    selectedChessman = Chessmans[x, y];
+                    SpawnChessman(20, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
                 }
 
                 if (!isWhiteTurn && (y == 1 || y == 2))
@@ -442,8 +443,8 @@ public class BoradManager : MonoBehaviour
                 {
                     activeChessman.Remove(selectedChessman.gameObject);
                     Destroy(selectedChessman.gameObject);
-                    SpawnChessman(26, x, y);
-                    selectedChessman = Chessmans[x, y];
+                    SpawnChessman(26, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
                 }
             }
             //ここまで
@@ -470,8 +471,8 @@ public class BoradManager : MonoBehaviour
                 {
                     activeChessman.Remove(selectedChessman.gameObject);
                     Destroy(selectedChessman.gameObject);
-                    SpawnChessman(19, x, y);
-                    selectedChessman = Chessmans[x, y];
+                    SpawnChessman(19, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
                 }
                 //ダサいやり方で改善の余地あり
 
@@ -495,8 +496,8 @@ public class BoradManager : MonoBehaviour
                 {
                     activeChessman.Remove(selectedChessman.gameObject);
                     Destroy(selectedChessman.gameObject);
-                    SpawnChessman(25, x, y);
-                    selectedChessman = Chessmans[x, y];
+                    SpawnChessman(25, selectedChessman.CurrentX, selectedChessman.CurrentY);
+                    selectedChessman = Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY];
                 }
 
             }
@@ -512,7 +513,7 @@ public class BoradManager : MonoBehaviour
     {
         //ここから駒を消すとこ
         Chessman c = Chessmans[x, y];
-
+        
         if (c != null && c.isWhite != isWhiteTurn)
         {
             //Capture a piece
@@ -560,9 +561,10 @@ public class BoradManager : MonoBehaviour
         }
 
         //成り選択画面の後Chessmans[x, y] がnullになっている ※解決済み
+        //Debug.Log(Chessmans[x, y] != null);
         if (Chessmans[x, y] != null)
             {
-                int koma_index;
+            int koma_index;
                 Chessman[] playerKomadai;
                 GameObject komadaiObject;
                 Vector3 komadaip;
