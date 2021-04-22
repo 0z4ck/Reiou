@@ -14,21 +14,41 @@ public class kei : Chessman
         // zibun team move
         if (isWhite)
         {
-            //UpLeft
+            if (CurrentY == -1)
+            {
+                for (int i = 0; i < 9; i++)
+                    for (int j = 0; j < 7; j++)
+                        if (BoradManager.Instance.Chessmans[i, j] == null)
+                            r[i, j] = true;
+
+            }
+            else
+            {
+                //UpLeft
                 KeiMove(CurrentX - 1, CurrentY + 2, ref r);
-            //UpRight
+                //UpRight
                 KeiMove(CurrentX + 1, CurrentY + 2, ref r);
 
+            }
         }
         else
         {
-
-            //DownLeft
+            if (CurrentY == -1)
+            {
+                for (int i = 0; i < 9; i++)
+                    for (int j = 2; j < 9; j++)
+                        if (BoradManager.Instance.Chessmans[i, j] == null)
+                            r[i, j] = true;
+            }
+            else
+            {
+                //DownLeft
                 KeiMove(CurrentX - 1, CurrentY - 2, ref r);
-            //DownRight
+                //DownRight
                 KeiMove(CurrentX + 1, CurrentY - 2, ref r);
 
-            return r;
+                return r;
+            }
         }
         return r;
     }
