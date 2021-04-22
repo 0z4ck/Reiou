@@ -157,10 +157,13 @@ public class BoradManager : MonoBehaviour
                     }
                     else
                     {
-                        //駒が選択されていて移動先の升がクリックされた状態
-                        // Move the chessman
-                        MoveChessman(selectionX, selectionY);
-                        //dumpBoard(Chessmans);
+                        if (selectionYShousuu > 0 && selectionYShousuu < 9)
+                        {
+                            //駒が選択されていて移動先の升がクリックされた状態
+                            // Move the chessman
+                            MoveChessman(selectionX, selectionY);
+                            //dumpBoard(Chessmans);
+                        }
                     }
                 }
             }
