@@ -12,82 +12,93 @@ public class hisya : Chessman
         int i;
 
         // Right
-        i = CurrentX;
-        while (true)
+        if (CurrentY == -1)
         {
-            i++;
-            if (i >= 9)
-                break;
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+                    if (BoradManager.Instance.Chessmans[i, j] == null)
+                        r[i, j] = true;
 
-            c = BoradManager.Instance.Chessmans[i, CurrentY];
-            if (c == null)
-                r[i, CurrentY] = true;
-            else
+        }
+        else
+        {
+            i = CurrentX;
+            while (true)
             {
-                if (c.isWhite != isWhite)
+                i++;
+                if (i >= 9)
+                    break;
+
+                c = BoradManager.Instance.Chessmans[i, CurrentY];
+                if (c == null)
                     r[i, CurrentY] = true;
+                else
+                {
+                    if (c.isWhite != isWhite)
+                        r[i, CurrentY] = true;
 
-                break;
+                    break;
+                }
             }
-        }
 
-        // Left
-        i = CurrentX;
-        while (true)
-        {
-            i--;
-            if (i < 0)
-                break;
-
-            c = BoradManager.Instance.Chessmans[i, CurrentY];
-            if (c == null)
-                r[i, CurrentY] = true;
-            else
+            // Left
+            i = CurrentX;
+            while (true)
             {
-                if (c.isWhite != isWhite)
+                i--;
+                if (i < 0)
+                    break;
+
+                c = BoradManager.Instance.Chessmans[i, CurrentY];
+                if (c == null)
                     r[i, CurrentY] = true;
+                else
+                {
+                    if (c.isWhite != isWhite)
+                        r[i, CurrentY] = true;
 
-                break;
+                    break;
+                }
             }
-        }
 
-        // Up
-        i = CurrentY;
-        while (true)
-        {
-            i++;
-            if (i >= 9)
-                break;
-
-            c = BoradManager.Instance.Chessmans[CurrentX, i];
-            if (c == null)
-                r[CurrentX, i] = true;
-            else
+            // Up
+            i = CurrentY;
+            while (true)
             {
-                if (c.isWhite != isWhite)
-                    r[CurrentX, i] = true;
+                i++;
+                if (i >= 9)
+                    break;
 
-                break;
+                c = BoradManager.Instance.Chessmans[CurrentX, i];
+                if (c == null)
+                    r[CurrentX, i] = true;
+                else
+                {
+                    if (c.isWhite != isWhite)
+                        r[CurrentX, i] = true;
+
+                    break;
+                }
             }
-        }
 
-        // Down
-        i = CurrentY;
-        while (true)
-        {
-            i--;
-            if (i < 0)
-                break;
-
-            c = BoradManager.Instance.Chessmans[CurrentX, i];
-            if (c == null)
-                r[CurrentX, i] = true;
-            else
+            // Down
+            i = CurrentY;
+            while (true)
             {
-                if (c.isWhite != isWhite)
-                    r[CurrentX, i] = true;
+                i--;
+                if (i < 0)
+                    break;
 
-                break;
+                c = BoradManager.Instance.Chessmans[CurrentX, i];
+                if (c == null)
+                    r[CurrentX, i] = true;
+                else
+                {
+                    if (c.isWhite != isWhite)
+                        r[CurrentX, i] = true;
+
+                    break;
+                }
             }
         }
 
