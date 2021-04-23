@@ -551,9 +551,18 @@ public class BoradManager : MonoBehaviour
 
             if (maisuuInt[koma_id] != 0)
             {
-                GameObject motigoma = Instantiate(chessmanPrefabs[koma_id], selectedChessman.transform.position, orientation) as GameObject;
-                whiteKomadai[koma_id] = motigoma.GetComponent<Chessman>();
-                whiteKomadai[koma_id].SetPosition(-1, -1);
+                if (isWhiteTurn)
+                {
+                    GameObject motigoma = Instantiate(chessmanPrefabs[koma_id], selectedChessman.transform.position, orientation) as GameObject;
+                    whiteKomadai[koma_id] = motigoma.GetComponent<Chessman>();
+                    whiteKomadai[koma_id].SetPosition(-1, -1);
+                }
+                else
+                {
+                    GameObject motigoma = Instantiate(chessmanPrefabs[koma_id], selectedChessman.transform.position, orientation) as GameObject;
+                    blackKomadai[koma_id] = motigoma.GetComponent<Chessman>();
+                    blackKomadai[koma_id].SetPosition(-1, -1);
+                }
             }
             if (maisuuInt[koma_id] <= 1)
             {
