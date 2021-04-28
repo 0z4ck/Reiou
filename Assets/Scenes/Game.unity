@@ -2171,34 +2171,34 @@ MonoBehaviour:
   komadai: {fileID: 2848742}
   komadaiteki: {fileID: 1463963114}
   chessmanPrefabs:
-  - {fileID: 569118584}
-  - {fileID: 1588917775}
-  - {fileID: 693302840}
-  - {fileID: 185424381}
-  - {fileID: 656163264}
-  - {fileID: 1120689360}
-  - {fileID: 1008323636}
-  - {fileID: 881781274}
-  - {fileID: 1318508967}
-  - {fileID: 795254327}
-  - {fileID: 2128150784}
-  - {fileID: 1666186228}
-  - {fileID: 0}
-  - {fileID: 727873267}
-  - {fileID: 1762672816}
-  - {fileID: 1569051213}
-  - {fileID: 922509649}
-  - {fileID: 432207017}
-  - {fileID: 1027480894}
-  - {fileID: 119051313}
-  - {fileID: 1998567481}
-  - {fileID: 428983809}
-  - {fileID: 1140567093}
-  - {fileID: 2143019560}
-  - {fileID: 306861551}
-  - {fileID: 1524475647}
-  - {fileID: 932487805}
-  - {fileID: 2131714760}
+  - {fileID: 4665581670940011420, guid: af9fc4385188b56458dcce7820cb4001, type: 3}
+  - {fileID: 2477722698952657349, guid: ce69c67223c5f774080cb644a07fb771, type: 3}
+  - {fileID: 261565958560398129, guid: 067c1c26ae7567747acc3a8468d3f0fa, type: 3}
+  - {fileID: 2797239227326898250, guid: 42694a73feb868447830919941702359, type: 3}
+  - {fileID: 6849658509965825290, guid: bfab5bc07e62ade4f8093a7db48b8b9e, type: 3}
+  - {fileID: 619336551587842293, guid: b5653c58f9a9c3a438e5eac9d07ec167, type: 3}
+  - {fileID: 9012974751320552800, guid: 8b9a45e5a638e6a439548e9c36ccc571, type: 3}
+  - {fileID: 2410487486926854890, guid: aecc51c51aaeb2c4cb3002720dd37a3a, type: 3}
+  - {fileID: 7193048426561044277, guid: ff50bd7f132cd484ea26fe5bb61733e2, type: 3}
+  - {fileID: 2498629188792852519, guid: ae7a031f0f8507240ad36fa914e9b91a, type: 3}
+  - {fileID: 2556543222750580984, guid: c2647c44726d84245b9bd868b0395b9e, type: 3}
+  - {fileID: 7509271504191740735, guid: f31c31df79f91124ebdde2e092865684, type: 3}
+  - {fileID: 3752535708745211249, guid: 3a56bebe63385674aa9bc83479efe726, type: 3}
+  - {fileID: 3898929673182904266, guid: 73130914369682c46a61d6ce386bd372, type: 3}
+  - {fileID: 2409066496235932708, guid: 5231eab3a0b24044da8f5fdeec9eac6c, type: 3}
+  - {fileID: 1805391069395399211, guid: d9a3ac1302176564685382d6bf6f9bef, type: 3}
+  - {fileID: 138059339490923949, guid: 946480c6a74f1d44d9b625aacc811ddd, type: 3}
+  - {fileID: 6516948468896330874, guid: 5cd4e651816b6294eb5968ac8bdcf16d, type: 3}
+  - {fileID: 9119096795096633575, guid: 2996ad9df97cbf049bb15fd9aa21d7d0, type: 3}
+  - {fileID: 4425527389326681693, guid: 577ceca030e0cdd4184d23cfe741a098, type: 3}
+  - {fileID: 9118297027477128644, guid: f7c0d419d1ddc3f42be03bb7764bbf2f, type: 3}
+  - {fileID: 461200132089695642, guid: 43006c84067b28b4085c87c1998741ca, type: 3}
+  - {fileID: 4377806035353398042, guid: 0f43939c5f55cf046b63411d3ea5608a, type: 3}
+  - {fileID: 2196816870050216812, guid: ef1cb0555debd084c9830e976cb02030, type: 3}
+  - {fileID: 2541822381671887789, guid: 9d0bdeb3eb9e43d4eb2d42c3f498469c, type: 3}
+  - {fileID: 8866327462046100973, guid: b3b968da7b0dc7b43b9b530d91e3c78c, type: 3}
+  - {fileID: 4218913004542628812, guid: 106107aecb2ff944bbce736706f28fa9, type: 3}
+  - {fileID: 3891307978540145591, guid: c79745bcc84e7e344ad85a4b2df28cc4, type: 3}
   textPrefab: {fileID: 1172309553}
   canvas: {fileID: 1589408312}
   isWhiteTurn: 1
