@@ -721,12 +721,8 @@ public class BoradManager : MonoBehaviour
         GameObject go = Instantiate(chessmanPrefabs[index], GetTileCenter(x,y), orientation) as GameObject;
         go.transform.SetParent(transform);
 
-        Debug.Log(go);
-        Debug.Log(go.GetComponent<Chessman>());
-        Debug.Log(go.GetComponent<To>());
         //駒を9x9二次元配列Chessmansに挿入
         Chessmans[x, y] = go.GetComponent<Chessman>();
-        Debug.Log(Chessmans[x, y]);
         Chessmans[x, y].SetPosition(x, y);
         //盤面上に存在する駒の配列に追加する
         activeChessman.Add(go);
