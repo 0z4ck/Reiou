@@ -14,16 +14,28 @@ public class PlayerController : MonoBehaviour
     Vector3 smoothMoveVelocity;
     Vector3 moveAmount;
     Rigidbody rb;
+    PhotonView PV;
 
 
+    void Start()
+    {
+        if (!PV.IsMine)
+        {
+            Destroy(GetComponentInChildren<Camera>().gameObject);
+            Destroy(rb);
+        }
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        PV = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!PV.IsMine)
+            return;
         Look();
         Move();
     }
@@ -44,8 +56,8 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        /*if (!PV.IsMine)
-            return;*/
+        if (!PV.IsMine)
+            return;
 
         rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
     }
