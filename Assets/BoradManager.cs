@@ -5,8 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
+[RequireComponent(typeof(PhotonView))]
 public class BoradManager : MonoBehaviour
 {
+    private PhotonView photonView;
     public static BoradManager Instance { set; get; }
     private bool[,] allowedMoves { set; get; }
     public Chessman[,] Chessmans { set; get; }
