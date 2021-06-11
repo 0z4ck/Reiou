@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class BoradManager : MonoBehaviour
 {
@@ -54,6 +55,12 @@ public class BoradManager : MonoBehaviour
 
     private int[] maisuuInt = new int[28];
 
+
+    [PunRPC]
+    void ChatMessage(string a, string b)
+    {
+        Debug.Log(string.Format("ChatMessage {0} {1}", a, b));
+    }
 
     private void Start()
     {
@@ -162,6 +169,8 @@ public class BoradManager : MonoBehaviour
                             //駒が選択されていて移動先の升がクリックされた状態
                             // Move the chessman
                             MoveChessman(selectionX, selectionY);
+                            PhotonView photonView = PhotonView.Get(this);
+                            photonView.RPC("ChatMessage", RpcTarget.All, "jup", "and jup.");
                             //dumpBoard(Chessmans);
                         }
                     }
